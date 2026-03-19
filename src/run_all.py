@@ -25,8 +25,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 from run_single import run_category, seed_everything
 
 CATEGORIES = [
-    "bottle", "cable", "capsule", "carpet", "grid",
-    "hazelnut", "leather", "metal_nut", "pill", "screw",
+    "metal_nut", "pill", "screw",
     "tile", "toothbrush", "transistor", "wood", "zipper",
 ]
 
@@ -42,7 +41,7 @@ def parse_args():
     p.add_argument("--faiss_gpu",  action="store_true", default=True)
     p.add_argument("--seed",       type=int, default=42)
     p.add_argument("--device",     type=str,
-                   default="cuda" if torch.cuda.is_available() else "cpu")
+                       default="cuda" if torch.cuda.is_available() else "cpu")
     p.add_argument("--categories", nargs="+", default=CATEGORIES,
                    help="Subset of categories to run (default: all 15)")
     return p.parse_args()

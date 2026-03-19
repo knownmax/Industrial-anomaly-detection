@@ -86,10 +86,13 @@ wandb/
 # ===========================
 # Output Files
 # ===========================
-
+.gitignore
 *.jpg
 *.jpeg
 *.pdf
+*.png
+*.csv
+*.json
 output/
 outputs/
 

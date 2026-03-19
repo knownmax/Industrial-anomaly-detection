@@ -13,6 +13,7 @@ import os
 import random
 import sys
 import time
+import warnings
 from pathlib import Path
 
 import numpy as np
@@ -27,6 +28,43 @@ from dataset import get_dataloaders
 from patchcore import PatchCore
 from metrics import evaluate_all
 from visualize import save_anomaly_grid, save_roc_curves, save_score_distribution
+
+
+def resolve_device(device: str) -> str:
+    """
+    Resolve a user-provided device string against currently visible CUDA devices.
+
+    Handles CUDA_VISIBLE_DEVICES remapping safely by falling back to cuda:0 when
+    an invalid ordinal is requested.
+    """
+    if device == "cpu":
+        return "cpu"
+
+    if not torch.cuda.is_available():
+        warnings.warn("CUDA requested but not available; falling back to CPU.")
+        return "cpu"
+
+    if device == "cuda":
+        return "cuda:0"
+
+    if device.startswith("cuda:"):
+        try:
+            idx = int(device.split(":", 1)[1])
+        except ValueError:
+            warnings.warn(f"Unrecognized device '{device}'; using cuda:0.")
+            return "cuda:0"
+
+        visible_count = torch.cuda.device_count()
+        if idx < 0 or idx >= visible_count:
+            warnings.warn(
+                f"Requested device '{device}' is invalid for current visibility "
+                f"(available cuda indices: 0..{max(visible_count - 1, 0)}). Using cuda:0."
+            )
+            return "cuda:0"
+        return f"cuda:{idx}"
+
+    warnings.warn(f"Unknown device '{device}'; using cuda:0.")
+    return "cuda:0"
 
 
 def seed_everything(seed: int) -> None:
@@ -68,6 +106,9 @@ def run_category(
     """Full fit + eval pipeline for one category. Returns metrics dict."""
 
     seed_everything(seed)
+    device = resolve_device(device)
+    print(f"  Using device   : {device}")
+
     out_dir = Path(output_dir) / category
     out_dir.mkdir(parents=True, exist_ok=True)
 

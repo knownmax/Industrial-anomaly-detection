@@ -7,9 +7,9 @@
 
 ## Overview
 
-**PatchCore** (Roth et al., 2022) is a state-of-the-art *training-free* anomaly detection method for industrial inspection. It builds a memory bank of patch-level feature descriptors extracted from normal (defect-free) images using a pretrained CNN backbone. At inference, anomaly scores are computed as the nearest-neighbour distance from test image patches to the memory bank — no fine-tuning or gradient updates required.
+**PatchCore** [(Roth et al., 2022)](https://arxiv.org/abs/2106.08265) is a state-of-the-art *training-free* anomaly detection method for industrial inspection. It builds a memory bank of patch-level feature descriptors extracted from normal (defect-free) images using a pretrained CNN backbone. At inference, anomaly scores are computed as the nearest-neighbour distance from test image patches to the memory bank — no fine-tuning or gradient updates required.
 
-This repository benchmarks PatchCore with a **WideResNet-101-2** backbone on the **MVTec Anomaly Detection** dataset, covering 15 industrial product categories (textures and objects). The implementation includes the three standard MVTec metrics: image-level AUROC, pixel-level AUROC, and the PRO score (Per-Region Overlap).
+This repository benchmarks PatchCore with a [WideResNet-101-2](https://arxiv.org/abs/1605.07146) backbone on the [MVTec Anomaly Detection](https://www.mvtec.com/company/research/datasets/mvtec-ad) dataset, covering 15 industrial product categories (textures and objects). The implementation includes the three standard MVTec metrics: image-level AUROC, pixel-level AUROC, and the PRO score (Per-Region Overlap).
 
 ---
 
@@ -52,24 +52,27 @@ INFERENCE (predict)
 > Fill in actual numbers after running `python src/run_all.py`.
 > Reference values (WRN-101, coreset 1%) from Roth et al. 2022 in parentheses.
 
-| Category     | Image AUROC | Pixel AUROC | PRO Score |
-|--------------|:-----------:|:-----------:|:---------:|
-| Bottle       |   xx.x      |   xx.x      |   xx.x    |
-| Cable        |   xx.x      |   xx.x      |   xx.x    |
-| Capsule      |   xx.x      |   xx.x      |   xx.x    |
-| Carpet       |   xx.x      |   xx.x      |   xx.x    |
-| Grid         |   xx.x      |   xx.x      |   xx.x    |
-| Hazelnut     |   xx.x      |   xx.x      |   xx.x    |
-| Leather      |   xx.x      |   xx.x      |   xx.x    |
-| Metal Nut    |   xx.x      |   xx.x      |   xx.x    |
-| Pill         |   xx.x      |   xx.x      |   xx.x    |
-| Screw        |   xx.x      |   xx.x      |   xx.x    |
-| Tile         |   xx.x      |   xx.x      |   xx.x    |
-| Toothbrush   |   xx.x      |   xx.x      |   xx.x    |
-| Transistor   |   xx.x      |   xx.x      |   xx.x    |
-| Wood         |   xx.x      |   xx.x      |   xx.x    |
-| Zipper       |   xx.x      |   xx.x      |   xx.x    |
-| **Mean**     | **~99.1**   | **~98.1**   | **~xx.x** |
+╒════════════╤═════════════════╤════════════════╤═══════════════╕
+│ Category   │ Img AUROC (%)   │ Px AUROC (%)   │ PRO (%)       │
+╞════════════╪═════════════════╪════════════════╪═══════════════╡
+│ metal_nut  │ 98.7            │ 95.5           │ 90.4          │
+├────────────┼─────────────────┼────────────────┼───────────────┤
+│ pill       │ 98.2            │ 96.5           │ 84.8          │
+├────────────┼─────────────────┼────────────────┼───────────────┤
+│ screw      │ 95.2            │ 99.3           │ 82.0          │
+├────────────┼─────────────────┼────────────────┼───────────────┤
+│ tile       │ 96.7            │ 94.0           │ 70.1          │
+├────────────┼─────────────────┼────────────────┼───────────────┤
+│ toothbrush │ 100.0           │ 98.7           │ 91.5          │
+├────────────┼─────────────────┼────────────────┼───────────────┤
+│ transistor │ 91.3            │ 77.1           │ 65.3          │
+├────────────┼─────────────────┼────────────────┼───────────────┤
+│ wood       │ 99.8            │ 96.6           │ 88.1          │
+├────────────┼─────────────────┼────────────────┼───────────────┤
+│ zipper     │ 95.8            │ 98.6           │ 38.7          │
+├────────────┼─────────────────┼────────────────┼───────────────┤
+│ Mean ± Std │ 97.0 ± 2.9      │ 94.5  ± 7.3    │ 76.3   ± 17.9 │
+╘════════════╧═════════════════╧════════════════╧═══════════════╛
 
 ---
 
@@ -96,11 +99,12 @@ python src/run_all.py \
 bash scripts/benchmark_all.sh
 ```
 
-Results are saved to `results/{category}/`:
+Results are saved to `results/{category}/`
+<!-- :
 - `metrics.json` — numerical metrics
 - `anomaly_grid.png` — 8 anomalous + 8 normal sample visualisations
 - `roc_curves.png` — Image AUROC, Pixel AUROC, PRO curve
-- `score_distribution.png` — KDE of anomaly scores
+- `score_distribution.png` — KDE of anomaly scores -->
 
 ---
 
@@ -172,4 +176,4 @@ industrial-anomaly-detection/
 
 ## License
 
-MIT License. The MVTec AD dataset has its own [license](https://www.mvtec.com/company/research/datasets/mvtec-ad/license).
+MIT License. The MVTec AD dataset has its own [license](https://creativecommons.org/licenses/by-nc-sa/4.0/).

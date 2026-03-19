@@ -1,0 +1,10 @@
+{
+  "category": "bottle",
+  "img_auroc": 1.0,
+  "px_auroc": 0.9787,
+  "pro_auc": 0.7863,
+  "bank_size": 6555,
+  "bank_mb": 20.14,
+  "fit_time_s": 348.88,
+  "pred_time_s": 5.71
+}

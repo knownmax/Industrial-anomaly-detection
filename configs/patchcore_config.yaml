@@ -1,0 +1,16 @@
+data_root: /data/max/kaggle/industrial-anomaly-detection/anomaly_ds
+output_dir: results
+backbone: wide_resnet101_2
+pretrained: true
+input_size: 224
+batch_size: 32
+coreset_ratio: 0.01
+faiss_gpu: true
+feature_layers:
+  - layer2
+  - layer3
+gaussian_sigma: 4
+pro_fpr_limit: 0.3
+num_pro_thresholds: 100
+device: cuda
+seed: 42

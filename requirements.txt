@@ -1,0 +1,16 @@
+torch>=2.0.0
+torchvision
+timm
+# faiss-gpu: conda install -c conda-forge faiss-gpu
+scikit-learn
+scikit-image
+scipy
+opencv-python
+matplotlib
+seaborn
+tqdm
+omegaconf
+Pillow
+pandas
+tabulate
+jupyter

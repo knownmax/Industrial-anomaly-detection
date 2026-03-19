@@ -1,0 +1,129 @@
+# ===========================
+# Python
+# ===========================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+pip-log.txt
+pip-delete-this-directory.txt
+
+# ===========================
+# Virtual Environments
+# ===========================
+venv/
+ENV/
+env/
+.venv
+env.bak/
+venv.bak/
+
+# ===========================
+# IDEs & Editors
+# ===========================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.sublime-project
+*.sublime-workspace
+.vim/
+.emacs.d/
+
+# ===========================
+# Jupyter Notebooks
+# ===========================
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+.jupyter/
+
+# ===========================
+# Conda
+# ===========================
+environment.yml.lock
+
+# ===========================
+# Data & Datasets (Large files)
+# ===========================
+anomaly_ds/
+*.zip
+*.tar
+*.tar.gz
+*.rar
+
+# ===========================
+# Model Checkpoints & Results
+# ===========================
+
+checkpoints/
+*.pt
+*.pth
+*.ckpt
+logs/
+runs/
+wandb/
+
+# ===========================
+# Output Files
+# ===========================
+
+*.jpg
+*.jpeg
+*.pdf
+output/
+outputs/
+
+# ===========================
+# Temporary Files
+# ===========================
+*.tmp
+*.temp
+*.cache
+.cache/
+tmp/
+temp/
+
+# ===========================
+# OS-Specific
+# ===========================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+*.local
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+.Xauthority
+.bash_history
+
+# ===========================
+# Project-Specific
+# ===========================
+.env
+.env.local
+config.local.yaml

@@ -49,30 +49,25 @@ INFERENCE (predict)
 
 ## Results
 
-> Fill in actual numbers after running `python src/run_all.py`.
-> Reference values (WRN-101, coreset 1%) from Roth et al. 2022 in parentheses.
 
-╒════════════╤═════════════════╤════════════════╤═══════════════╕
-│ Category   │ Img AUROC (%)   │ Px AUROC (%)   │ PRO (%)       │
-╞════════════╪═════════════════╪════════════════╪═══════════════╡
-│ metal_nut  │ 98.7            │ 95.5           │ 90.4          │
-├────────────┼─────────────────┼────────────────┼───────────────┤
-│ pill       │ 98.2            │ 96.5           │ 84.8          │
-├────────────┼─────────────────┼────────────────┼───────────────┤
-│ screw      │ 95.2            │ 99.3           │ 82.0          │
-├────────────┼─────────────────┼────────────────┼───────────────┤
-│ tile       │ 96.7            │ 94.0           │ 70.1          │
-├────────────┼─────────────────┼────────────────┼───────────────┤
-│ toothbrush │ 100.0           │ 98.7           │ 91.5          │
-├────────────┼─────────────────┼────────────────┼───────────────┤
-│ transistor │ 91.3            │ 77.1           │ 65.3          │
-├────────────┼─────────────────┼────────────────┼───────────────┤
-│ wood       │ 99.8            │ 96.6           │ 88.1          │
-├────────────┼─────────────────┼────────────────┼───────────────┤
-│ zipper     │ 95.8            │ 98.6           │ 38.7          │
-├────────────┼─────────────────┼────────────────┼───────────────┤
-│ Mean ± Std │ 97.0 ± 2.9      │ 94.5  ± 7.3    │ 76.3   ± 17.9 │
-╘════════════╧═════════════════╧════════════════╧═══════════════╛
+| Category     | Image AUROC | Pixel AUROC | PRO Score |
+|--------------|:-----------:|:-----------:|:---------:|
+| Bottle       |   100.0     |   97.9      |   78.7    |
+| Cable        |   91.42     |   90.9      |   74.0    |
+| Capsule      |   95.7      |   97.5      |   94.3    |
+| Carpet       |   96.0      |   98.2      |   86.2    |
+| Grid         |   98.7      |   99.3      |   75.1    |
+| Hazelnut     |   98.6      |   98.6      |   83.6    |
+| Leather      |   99.9      |   99.5      |   63.4    |
+| Metal Nut    |   98.7      |   95.5      |   90.4    |
+| Pill         |   98.2      |   96.5      |   84.8    |
+| Screw        |   95.2      |   99.3      |   82.0    |
+| Tile         |   96.7      |   94.0      |   70.1    |
+| Toothbrush   |   100.0     |   98.7      |   91.5    |
+| Transistor   |   91.3      |   77.1      |   65.3    |
+| Wood         |   99.8      |   96.6      |   88.1    |
+| Zipper       |   95.8      |   98.6      |   38.7    |
+| **Mean**     | **97.07**   | **95.88**   | **77.75** |
 
 ---
 
@@ -142,16 +137,16 @@ industrial-anomaly-detection/
 ├── README.md
 ├── requirements.txt
 ├── configs/
-│   └── patchcore_config.yaml      ← all hyperparameters
+│   └── patchcore_config.yaml      
 ├── src/
-│   ├── dataset.py                 ← MVTec dataset loaders
-│   ├── feature_extractor.py       ← WideResNet-101-2 patch features
-│   ├── coreset.py                 ← greedy coreset subsampling (pure PyTorch)
-│   ├── patchcore.py               ← PatchCore model (fit + predict)
-│   ├── metrics.py                 ← AUROC, pixel AUROC, PRO score
-│   ├── visualize.py               ← anomaly grids, ROC curves, KDE plots
-│   ├── run_single.py              ← demo: train + eval one category
-│   └── run_all.py                 ← benchmark: all 15 categories
+│   ├── dataset.py               
+│   ├── feature_extractor.py       
+│   ├── coreset.py                 
+│   ├── patchcore.py              
+│   ├── metrics.py                 
+│   ├── visualize.py              
+│   ├── run_single.py              
+│   └── run_all.py                
 ├── notebooks/
 │   └── inference_demo.ipynb
 ├── results/

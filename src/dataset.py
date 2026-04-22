@@ -92,7 +92,7 @@ class MVTecTestDataset(Dataset):
     def __getitem__(self, idx: int) -> Tuple[torch.Tensor, int, torch.Tensor, str]:
         img_path, label, mask_path, defect_type = self.samples[idx]
 
-        img = Image.open(img_path).convert("RGB")
+        img = Image.open(img_path)
         img_tensor = IMAGE_TRANSFORM(img)
 
         if mask_path is not None:

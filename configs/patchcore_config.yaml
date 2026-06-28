@@ -13,4 +13,4 @@ gaussian_sigma: 4
 pro_fpr_limit: 0.3
 num_pro_thresholds: 100
 device: cuda
-seed: 42
+seed: 48
